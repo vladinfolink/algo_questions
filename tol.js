@@ -13,6 +13,8 @@
 
 pairCounter([-1, 2, 3, 4, 5, 6, 7, 8], 7);
 
+// 1. Given an array of N distinct natural numbers, how many pairs of numbers sum up to a given number S?
+
 const pairCounter = function (arr, S) {
   let res = 0;
   arr.forEach((item) => {
@@ -24,7 +26,7 @@ const pairCounter = function (arr, S) {
   return res;
 }
 
-pairCounter([-1, 2, 3, 4, 5, 6, 7, 8], 7);
+// pairCounter([-1, 2, 3, 4, 5, 6, 7, 8], 7);
 
 // Given an array of N natural numbers, find the number that appears more than N/2 times.
 
@@ -35,17 +37,18 @@ const findNum = (arr) => {
 	}, []).forEach((item) => {
 		if (pairs.length === 0) {
 			pairs.push(item)
-		};
-		if (pairs.length === 0 || pairs[0][0] === item[0]) {
+		}else if ( pairs[0][0] === item[0]) {
 			pairs[0][1]++
 		} else {
 			pairs.unshift(item)
 		}
 	});
-	return pairs;
+	return pairs.filter((e) => {
+		return e[1] > arr.length/2
+	})[0][0]
 }
 
-findNum([1, 1, 2, 3, 6, 5, 4, 4, 4])
+// findNum([1, 1, 2, 3, 6, 5, 4, 4, 4, 4, 4, 4, 4])
 
 
 
